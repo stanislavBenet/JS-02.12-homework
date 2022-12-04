@@ -8,12 +8,16 @@
 // риймає будь яку 3d фігуру і повертає її об'єм.
 
 class Figure3D {
+  /**
+   *
+   * @param {string} name
+   */
   constructor(name) {
     this.name = name;
   }
   set name(name) {
     if (typeof name !== "string") {
-      throw new TypeError("Name must be a number");
+      throw new TypeError("Name must be a string");
     }
     this._name = name;
   }
@@ -22,6 +26,10 @@ class Figure3D {
 }
 
 class Sphere extends Figure3D {
+  /**
+   *
+   * @param {number} radius
+   */
   constructor(radius) {
     super("sphere");
     this.radius = radius;
@@ -40,6 +48,10 @@ class Sphere extends Figure3D {
   }
 }
 class Cube extends Figure3D {
+  /**
+   *
+   * @param {number} cubeEdge
+   */
   constructor(cubeEdge) {
     super("Cube");
     this.cubeEdge = cubeEdge;
@@ -58,6 +70,11 @@ class Cube extends Figure3D {
   }
 }
 class Сylinder extends Figure3D {
+  /**
+   *
+   * @param {number} height
+   * @param {number} radius
+   */
   constructor(height, radius) {
     super("Сylinder");
     this.height = height;
@@ -86,13 +103,12 @@ class Сylinder extends Figure3D {
   }
 }
 
-function showVolume(Object) {
-  if (Object instanceof Figure3D) {
-    return Object.getVolume();
+function showVolume(obj) {
+  if (obj instanceof Figure3D) {
+    return obj.getVolume();
   }
   throw new TypeError("Object must be figure3d");
 }
-
 
 try {
   const sphere = new Sphere(3);
@@ -104,4 +120,3 @@ try {
 } catch (error) {
   console.log(error);
 }
-
